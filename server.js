@@ -3,50 +3,45 @@ const path = require('path');
 const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-
+const crypto = require('crypto');
 const app = express();
 
-// Session setup
+
+const secret = crypto.randomBytes(64).toString('hex');
 app.use(session({
-    secret: 'yourSecretKey',
+    secret: secret,
     resave: false,
     saveUninitialized: true
 }));
-
-// Passport setup
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Body parser for handling form data
 app.use(express.urlencoded({ extended: false }));
 
-// Define a simple user database (for demo purposes)
 const users = [
-    { id: 1, username: 'user1', password: 'password1' },
-    { id: 2, username: 'user2', password: 'password2' }
+    { id: 1, email: 'user1@example.com', password: 'password1' },
+    { id: 2, email: 'user2@example.com', password: 'password2' }
 ];
 
-// Passport Local Strategy
 passport.use(new LocalStrategy(
-    (username, password, done) => {
-        const user = users.find(user => user.username === username && user.password === password);
+    { usernameField: 'email' }, 
+    (email, password, done) => {
+        const user = users.find(user => user.email === email && user.password === password);
         if (user) return done(null, user);
-        return done(null, false, { message: 'Incorrect username or password.' });
+        return done(null, false, { message: 'Incorrect email or password.' });
     }
 ));
 
-// Serialize user information into session
 passport.serializeUser((user, done) => {
     done(null, user.id);
 });
 
-// Deserialize user from session
 passport.deserializeUser((id, done) => {
     const user = users.find(user => user.id === id);
     done(null, user);
 });
 
-// Middleware to check if the user is authenticated
+
 function isAuthenticated(req, res, next) {
     if (req.isAuthenticated()) return next();
     res.redirect('/login');
