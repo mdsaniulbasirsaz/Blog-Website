@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Trails</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #F9FCFF;">
+        <div class="container">
+            <a class="navbar-brand font-weight-bold" style="color: #183B56;" href="#">Travel Trails.</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item pr-3">
+                  <a class="nav-link text-dark" href="/src/index.html">Home</a>
+                </li>
+                <li class="nav-item dropdown pr-3">
+                    <a class="nav-link dropdown-toggle" href="/src/index.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Blog
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item text-dark" href="/src/food.html">Food</a>
+                      <a class="dropdown-item text-dark" href="/src/technology.html">Technology</a>
+                      <a class="dropdown-item text-dark" href="/src/travel.html">Travel</a>
+                    </div>
+                  </li>
+                <li class="nav-item pr-3">
+                  <a class="nav-link text-dark" href="/src/contact.html">Contact us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-primary" href="/src/signIn.html">Sign in</a>
+                </li>
+              </ul>
+            </div>
+        </div>
+      </nav>
+
+      <div class="container mt-4">
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+             <div class="heading">
+                <h4  class="font-weight-bold" style="font-size:35px; color: #183B56;">Read the most interesting articles</h4>
+                <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+             </div>
+             <div>
+                <form class="form-inline">
+                    <input type="search" id="searchArticle" class="form-control" placeholder="Search article . . . ."/>
+                    <button class="btn btn-primary  my-2 my-sm-1 ml-2" type="submit" id="searchBtn">Search</button>
+                </form>
+             </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 col-lg-6 mx-auto text-justify-content text-center">
+              <img src="https://img.freepik.com/premium-vector/young-freelancer-writing-creative-article-blog-social-media-promotion-content-writer_530733-2834.jpg?ga=GA1.1.209838246.1722743839&semt=ais_hybrid" alt="" style="width: 300px;">
+            </div>
+          </div>
+      </div>
+
+      <div class="container mt-5">
+        <div class="row">
+            <div class="col-sm-6 col-12 col-md-6 col-lg-4 text-justify-content mt-3">
+                <div class="card text-justify-content" style="width: 18rem;">
+                    <img src="https://img.freepik.com/free-photo/water-mountain-tourism-mountains-blue-countryside_1417-1226.jpg?ga=GA1.1.209838246.1722743839&semt=ais_hybrid" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#staticBackdrop">
+                        See more
+                      </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-12 col-md-6 col-lg-4 text-justify-content mt-3">
+                <div class="card text-justify-content" style="width: 18rem;">
+                    <img src="https://img.freepik.com/free-photo/representation-user-experience-interface-design_23-2150169850.jpg?ga=GA1.1.209838246.1722743839&semt=ais_hybrid" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#staticBackdrop">
+                        See more
+                      </button>                    
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-12 col-md-6 col-lg-4 text-justify-content mt-3">
+                <div class="card text-justify-content" style="width: 18rem;">
+                    <img src="https://img.freepik.com/premium-photo/close-up-magnifying-glass-pencil-paper_1048944-26751100.jpg?ga=GA1.1.209838246.1722743839&semt=ais_hybrid" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#staticBackdrop">
+                        See more
+                      </button>                    
+                    </div>
+                </div>
+            </div>
+          </div>
+      </div>
+
+      <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="articleHeading">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-dialog modal-dialog-scrollable">
+               <p class="text-justify pl-3 pr-3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi, fuga. Minus voluptatum animi aut cum blanditiis veniam dignissimos quia, laudantium ullam est et ex illo rem. Quos necessitatibus eos omnis.</p>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">Previous</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>
+    </div>
+
+    <div class="container my-1">
+    <footer class="text-center text-white" style="background-color:#183B56">
+    <div class="container p-4">
+      <section class="">
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-6">
+            <div class="ratio ratio-16x9">
+              <iframe
+                class="shadow-1-strong rounded"
+                src="https://videos.pexels.com/video-files/4828605/4828605-uhd_2732_1440_25fps.mp4"
+                title="YouTube video"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      <span style="font-size: 13px;">© 2024 Copyright:</span>
+      <a class="text-white" href=""><span class="text-primary" style="font-size: 13px;">Md Saniul Basir Saz</span></a>
+    </div>
+  </footer>
+  </div>
+
+    
+    
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+</body>
+</html>
