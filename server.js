@@ -4,8 +4,16 @@ const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const crypto = require('crypto');
+const bcrypt = require('bcrypt');
+const mongoose = require('mongoose');
 const app = express();
+app.use(express.json());
 
+// Connect to MongoDB
+mongoose.connect('mongodb+srv://saniulsaz:12345@roktodin.abnxvco.mongodb.net/BlogWebsite2025', {
+})
+.then(() => console.log('MongoDB connected'))
+.catch(err => console.log('MongoDB connection error:', err));
 
 const secret = crypto.randomBytes(64).toString('hex');
 app.use(session({
@@ -18,29 +26,82 @@ app.use(passport.session());
 
 app.use(express.urlencoded({ extended: false }));
 
-const users = [
-    { id: 1, email: 'user1@example.com', password: 'password1' },
-    { id: 2, email: 'user2@example.com', password: 'password2' }
-];
+// User schema
+const userSchema = new mongoose.Schema({
+    name: String,
+    email:String,
+    password: String
+});
 
-passport.use(new LocalStrategy(
-    { usernameField: 'email' }, 
-    (email, password, done) => {
-        const user = users.find(user => user.email === email && user.password === password);
-        if (user) return done(null, user);
-        return done(null, false, { message: 'Incorrect email or password.' });
+// Pre-save hook to hash the password
+userSchema.pre('save', async function (next) {
+    if (this.isModified('password') || this.isNew) {
+        try {
+            const salt = await bcrypt.genSalt(10);
+            this.password = await bcrypt.hash(this.password, salt);
+            next();
+        } catch (err) {
+            next(err);
+        }
+    } else {
+        next();
     }
-));
+});
+
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;
+
+
+// POST route for user registration
+app.post('/register', async (req, res) => {
+    try {
+        const { name, email, password } = req.body;
+
+        if (!name || !email || !password) {
+            return res.status(400).json({ message: 'All fields are required' });
+        }
+
+        const user = new User({ name, email, password });
+        await user.save();
+
+        res.status(201).json({ message: 'User registered successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Server error', error });
+    }
+});
+app.get('/user/:email', async (req, res) => {
+    try {
+        const { email } = req.params;
+
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        const { password, ...userData } = user.toObject();
+
+        res.status(200).json(userData);
+    } catch (error) {
+        res.status(500).json({ message: 'Server error', error });
+    }
+});
+
+
 
 passport.serializeUser((user, done) => {
     done(null, user.id);
 });
 
-passport.deserializeUser((id, done) => {
-    const user = users.find(user => user.id === id);
-    done(null, user);
+passport.deserializeUser(async (id, done) => {
+    try {
+        const user = await User.findById(id);
+        done(null, user);
+    } catch (err) {
+        done(err);
+    }
 });
-
 
 function isAuthenticated(req, res, next) {
     if (req.isAuthenticated()) return next();
@@ -50,9 +111,6 @@ function isAuthenticated(req, res, next) {
 // Paths
 const publicPath = path.join(__dirname, 'public');
 const srcPath = path.join(__dirname, 'src');
-app.use(express.static(path.join(__dirname, 'src')));
-
-// Serve static files
 app.use(express.static(publicPath));
 
 // Routes
@@ -68,6 +126,7 @@ app.post('/login', passport.authenticate('local', {
 app.get('/signup', (req, res) => {
     res.sendFile(path.join(srcPath, 'signup.html'));
 });
+
 
 app.get('/dashboard', isAuthenticated, (req, res) => {
     res.sendFile(path.join(srcPath, 'dashboard.html'));
