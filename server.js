@@ -40,6 +40,7 @@ userSchema.pre('save', async function (next) {
         try {
             const salt = await bcrypt.genSalt(10);
             this.password = await bcrypt.hash(this.password, salt);
+            console.log('Password hashed:', this.password); // Debugging line
             next();
         } catch (err) {
             next(err);
@@ -48,6 +49,7 @@ userSchema.pre('save', async function (next) {
         next();
     }
 });
+
 
 const User = mongoose.model('User', userSchema);
 
@@ -132,14 +134,16 @@ passport.deserializeUser(async (id, done) => {
 });
 
 function isAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) return next();
+    if (req.isAuthenticated()) {
+        return next();
+    }
     res.redirect('/login');
 }
 
+
 // Paths
-const publicPath = path.join(__dirname, 'public');
 const srcPath = path.join(__dirname, 'src');
-app.use(express.static(publicPath));
+app.use(express.static(srcPath));
 
 // Routes
 app.get('/login', (req, res) => {
@@ -180,6 +184,8 @@ app.get('/contact', isAuthenticated, (req, res) => {
 app.get('/index', isAuthenticated, (req, res) => {
     res.sendFile(path.join(srcPath, 'index.html'));
 });
+
+
 
 // Start the server
 app.listen(3000, () => {
