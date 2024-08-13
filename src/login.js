@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (response.ok) {
                 alert(data.message);
+                localStorage.setItem('email', email);
                 localStorage.setItem('token', data.token); 
                 window.location.href = 'dashboard.html';
             } else {

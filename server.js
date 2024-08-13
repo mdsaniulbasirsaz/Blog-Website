@@ -120,6 +120,36 @@ app.post('/login', async (req, res) => {
     }
 });
 
+//Food
+const foodCategorySchema = new mongoose.Schema({
+    category:String,
+    blogTitle: String,
+    name: String,
+    additionalText: String,
+    image: String,
+    date: {
+        type: Date,
+        default: Date.now
+    }
+   });
+  
+  const FoodCategory = mongoose.model('FoodCategory', foodCategorySchema);
+  module.exports = FoodCategory;
+
+  app.post('/add-food', async (req, res) => {
+    try {
+        console.log(req.body);
+      const {category,blogTitle,name,additionalText,image,date} = req.body;
+      const food = new FoodCategory({category,blogTitle,name,additionalText,image,date: date || Date.now()});
+  
+      await food.save();
+      
+      res.status(201).json({ message: 'Blog added successfully', foodcategory: food });
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  });
+
 
 passport.serializeUser((user, done) => {
     done(null, user.id);

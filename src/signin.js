@@ -24,6 +24,7 @@ document.getElementById('signIn').addEventListener('submit', async function (e) 
         const result = await response.json();
         if (response.ok) {
             localStorage.setItem('email', email);
+            localStorage.setItem('name',name);
             localStorage.setItem('password', password);
             localStorage.setItem('token', result.token);
             alert('Registration successful');
