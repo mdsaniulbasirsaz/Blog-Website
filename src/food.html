@@ -48,71 +48,40 @@
       </div>
 
       <div class="container mt-5">
-        <div class="row">
-            <div class="col-sm-6 col-12 col-md-6 col-lg-4 text-justify-content mt-3">
+        <div class="row" id="blogContainer">
+            <!-- <div class="col-sm-6 col-12 col-md-6 col-lg-4 text-justify-content mt-3">
                 <div class="card text-justify-content" style="width: 18rem;">
                     <img src="https://img.freepik.com/free-photo/water-mountain-tourism-mountains-blue-countryside_1417-1226.jpg?ga=GA1.1.209838246.1722743839&semt=ais_hybrid" class="card-img-top" alt="...">
                     <div class="card-body">
-                      <h5 class="card-title mb-0">Card title</h5>
+                      <h5 class="card-title mb-0" id="category">category</h5>
                       <small id="date">20 Aug,2024</small>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <p class="card-text" id="blogTitle">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                       <p>by <strong id="name" style="font-size: 14px;">Md Saniul Basir Saz</strong></p>
                       <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#staticBackdrop">
                         See more
                       </button>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-6 col-12 col-md-6 col-lg-4 text-justify-content mt-3">
-                <div class="card text-justify-content" style="width: 18rem;">
-                    <img src="https://img.freepik.com/free-photo/representation-user-experience-interface-design_23-2150169850.jpg?ga=GA1.1.209838246.1722743839&semt=ais_hybrid" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title mb-0">Card title</h5>
-                      <small id="date">20 Aug,2024</small>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <p>by <strong id="name" style="font-size: 14px;">Md Saniul Basir Saz</strong></p>
-                      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#staticBackdrop">
-                        See more
-                      </button>                    
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-12 col-md-6 col-lg-4 text-justify-content mt-3">
-                <div class="card text-justify-content" style="width: 18rem;">
-                    <img src="https://img.freepik.com/premium-photo/close-up-magnifying-glass-pencil-paper_1048944-26751100.jpg?ga=GA1.1.209838246.1722743839&semt=ais_hybrid" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title mb-0">Card title</h5>
-                      <small id="date">20 Aug,2024</small>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <p>by <strong id="name" style="font-size: 14px;">Md Saniul Basir Saz</strong></p>
-                      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#staticBackdrop">
-                        See more
-                      </button>                    
-                    </div>
-                </div>
-            </div>
+            </div> -->
         </div>
       </div>
 
       <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="articleHeading">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+      <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h5 id="blogTitle">Saz</h5>
+                    <hr>
+                    <p id="additionalText" class="text-justify pl-3 pr-3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi, fuga. Minus voluptatum animi aut cum blanditiis veniam dignissimos quia, laudantium ullam est et ex illo rem. Quos necessitatibus eos omnis.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
-            <div class="modal-dialog modal-dialog-scrollable">
-               <p class="text-justify pl-3 pr-3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi, fuga. Minus voluptatum animi aut cum blanditiis veniam dignissimos quia, laudantium ullam est et ex illo rem. Quos necessitatibus eos omnis.</p>
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
         </div>
     </div>
+    
 
     <div class="container mt-4">
         <nav aria-label="Page navigation example">
@@ -141,6 +110,8 @@
 
     
     
+
+    <script src="/food.js"></script>
 
 
 

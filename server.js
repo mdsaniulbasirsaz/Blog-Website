@@ -149,7 +149,27 @@ const foodCategorySchema = new mongoose.Schema({
       res.status(400).json({ error: error.message });
     }
   });
-
+  app.get('/get-food', async (req, res) => {
+    try {
+        const foods = await FoodCategory.find();
+        res.status(200).json(foods);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+    });
+    app.get('/blog/:id', async (req, res) => {
+        try {
+            const blogId = req.params.id;
+            const blog = await FoodCategory.findById(blogId);
+            if (!blog) {
+                return res.status(404).json({ error: 'Blog not found' });
+            }
+            res.status(200).json(blog);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    });
+    
 
 passport.serializeUser((user, done) => {
     done(null, user.id);
